@@ -21,10 +21,13 @@ module.exports = function(grunt) {
 				eqnull:true,
 				browser:true,
 				predef: ["jQuery", "$"],
-				ignores:['www/js/development/theme/handlebars.js']
+				ignores:['www/js/development/theme/handlebars.js',
+				         'www/js/development/theme/cordova-2.7.0.js',
+				         'www/js/development/theme/phonegap-websocket.js',
+				         'www/js/development/theme/socket.io.js']
 			},
 			/*'all' is an array of files / folders that are to be included in the JS Lint*/
-			files: ['www/js/development/theme/*.js']
+			files: ['www/js/development/theme/*.js'],
 		},
 		concat:{
 			options: {
@@ -32,7 +35,10 @@ module.exports = function(grunt) {
 			},
 			jsConcat:{
 				src:[
-						'www/js/production/minified/index.js'
+				     	//'www/js/production/minified/cordova.min.js',
+				     	'www/js/production/minified/websocket.min.js',
+				     	'www/js/production/minified/socket-io.min.js',
+						'www/js/production/minified/index.min.js'
 				     ],
 				     dest:'www/js/production/combined.min.js'
 			},
@@ -64,7 +70,13 @@ module.exports = function(grunt) {
 				     'www/js/production/minified/bootstrap-modal.min.js':['www/js/development/bootstrap/bootstrap-modal.js'],
 				     'www/js/production/minified/bootstrap-popover.min.js':['www/js/development/bootstrap/bootstrap-popover.js'],
 					 
-					 'www/js/production/minified/index.js':['www/js/development/theme/index.js']
+				     /** The index.js to hold the main functionality **/
+					 'www/js/production/minified/index.min.js':['www/js/development/theme/index.js'],
+					 
+					 /** Phone gap and sockect IO related stuff**/
+					 //'www/js/production/minified/cordova.min.js':['www/js/development/theme/cordova-2.7.0.js'],
+					 'www/js/production/minified/websocket.min.js':['www/js/development/theme/phonegap-websocket.js'],
+					 'www/js/production/minified/socket-io.min.js':['www/js/development/theme/socket.io.js'],
 					 
 				}
 			}
