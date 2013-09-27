@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  
+  <!-- CSS Files go here -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  
+  <!-- JS Links should sit on the bottom of the page! -->  
+</head>
+<body>
+	<!-- The html for the app goes here. -->
+	<div id="geo-setup" class="container-fluid">
+		<p>&nbsp;</p>
+		<div class="row-fluid">
+			<div class="span8 offset2 alert alert-info">
+				<h2>Connection Setup</h2>
+				<p>Required for initial node server request based on IP since we don't have an actual server</p>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span8 offset2">
+				<form id="ip-setup-form">
+					<fieldset>
+						<legend>Setup Data</legend>
+
+						<div class="well">
+							<label>IP Address:</label> 
+							<input id="ip-address" type="text" placeholder="127.0.0.1"> 
+							<span class="help-block">Enter the IP of the machine running the node server.</span> 
+
+							<label>Port Number:</label> 
+							<input id="ip-port" type="text" placeholder="8080"> 
+							<span class="help-block">Enter node server port.</span> 
+
+							<label class="checkbox"> 
+								<input id="ip-ssl" type="checkbox"> Is SSL (https) ?
+							</label>
+						</div>
+						<div class="row-fluid">
+							<div class="span2 offset5">
+								<button id="ip-setup-form-submit" type="button" class="btn btn-block btn-primary">Submit</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="geo-maps" class="container-fluid" style="display:none">
+		<p>&nbsp;</p>
+		<div class="row-fluid">
+			<div class="span8 offset2">
+				<div class="navbar">
+				  <div class="navbar-inner">
+				    <a class="brand" href="#">Carpooler</a>
+				    <form class="navbar-form pull-right">
+					  <button id="pooler-find" type="submit" class="btn btn-info">Find Poolers</button>
+					</form>
+				  </div>
+				</div>
+				<div id="map-holder" class="well well-large">
+					<!-- Map holder -->
+				</div>
+				<form class="text-center">
+				  <div class="row-fluid"> 
+				 	<div class="span2 offset5">
+					 	<button id="broadcast-location" type="submit" class="btn btn-block btn-inverse">Broadcast Location</button>
+					</div>
+				  </div>
+				</form>
+			</div>
+		</div>
+		
+		<div class="row-fluid"></div>
+	</div>
+		
+	<!-- The html for the app goes here. -->
+	<script type="text/javascript" src="js/jquery10.min.js"></script>
+  	<script type="text/javascript" src="js/jquery-migrate.min.js"></script>
+  	<script type="text/javascript" src="phonegap.js"></script>
+  	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/combined.min.js"></script>
+</body>
+</html>

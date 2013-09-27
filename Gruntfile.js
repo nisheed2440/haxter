@@ -80,7 +80,36 @@ module.exports = function(grunt) {
 					 
 				}
 			}
-		}
+		},
+		copy: {
+			  css: {
+			    expand: true,
+			    cwd: 'www/css/',
+			    src: '**',
+			    dest: '../phonegap/www/css/',
+			    flatten: true,
+			    filter: 'isFile',
+			    
+			  },
+			  js:{
+				  expand: true,
+				    cwd: 'www/js/production',
+				    src: '*',
+				    dest: '../phonegap/www/js/',
+				    flatten: true,
+				    filter: 'isFile',
+			  },
+			  html:{
+				  expand: true,
+				  cwd: 'www/html/',
+				  src: '*',
+				  dest: '../phonegap/www/',
+				  flatten: true,
+				  filter: 'isFile', 
+			  }
+			  
+			}
+		
 		
 		});
 		
@@ -89,8 +118,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	
 	// Default task(s).
 	grunt.registerTask('default', ['jshint','uglify','concat']);
+	
+	grunt.registerTask('phonegap', ['copy']);
 
 };
