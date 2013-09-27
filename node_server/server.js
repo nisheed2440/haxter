@@ -29,6 +29,9 @@ app.get('/js/jquery-1.10.2.min.map', function (req, res) {
 app.get('/js/bootstrap.min.js', function (req, res) {
 	res.sendfile(__dirname + '/js/bootstrap.min.js');
 });
+app.get('/js/index.js', function (req, res) {
+	res.sendfile(__dirname + '/js/index.js');
+});
 //Resources CSS
 app.get('/css/bootstrap.min.css', function (req, res) {
 	res.sendfile(__dirname + '/css/bootstrap.min.css');
@@ -44,16 +47,10 @@ io.sockets.on('connection', function (socket) {
 	socket.emit('client connected',{message:'Connected successfully'});
 
 	//When user sends data to the server
-	socket.on('accel data', function (data) {
-		var coordinateData = {};
-		coordinateData.x = data.posX;
-		coordinateData.y = data.posY;
-		coordinateData.z = data.posZ;
-
-		var tiltDir = tiltDirection(data.posX,data.posY,data.posZ);
-
-		//Send this event to the client to do whatever
-		io.sockets.emit('update accel data',{coordinateData:tiltDir});
+	socket.on('find poolers', function (data) {
+		console.log(JSON.stringify(data));
+		//A big json of ppl close to him
+		io.sockets.emit('poolers',{data:'SMTHING HERE'});
 	});
 
 	//When socket is disconnected
